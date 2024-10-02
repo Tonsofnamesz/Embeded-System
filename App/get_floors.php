@@ -3,12 +3,12 @@ include 'db.php';
 
 $building_id = $_GET['building_id'];
 
-$sql = "SELECT f.id as floor_id, f.floor_number, t.id as toilet_id, g.label, t.usage_count
+$sql = "SELECT f.id as floor_id, f.floor_number, t.gender_id, g.label, t.usage_count
         FROM floors f
-        JOIN toilets t ON f.id = t.floor_id
-        JOIN gender g ON t.gender_id = g.id
+        LEFT JOIN toilets t ON f.id = t.floor_id
+        LEFT JOIN gender g ON t.gender_id = g.id
         WHERE f.building_id = ?";
-        
+
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $building_id);
 $stmt->execute();
@@ -18,7 +18,7 @@ $current_floor = -1;
 $output = '';
 
 while ($row = $result->fetch_assoc()) {
-    // Group toilets by floor
+    // New floor container
     if ($current_floor != $row['floor_id']) {
         if ($current_floor != -1) {
             $output .= '</div>'; // Close previous floor container
@@ -28,12 +28,12 @@ while ($row = $result->fetch_assoc()) {
         $current_floor = $row['floor_id'];
     }
 
-    // Display male/female icons with usage count and reset button
+    // Male/Female icons and counters in the same container
     $gender_icon = $row['label'] == 'Male' ? '♂️' : '♀️';
     $output .= '<div class="toilet-box">';
     $output .= '<span class="icon">' . $gender_icon . '</span>';
     $output .= '<span class="usage-count">' . $row['usage_count'] . '</span>';
-    $output .= '<button class="reset-btn" onclick="resetUsage(' . $row['toilet_id'] . ')">Reset</button>';
+    $output .= '<button class="reset-btn" onclick="resetUsage(' . $row['gender_id'] . ')">Reset</button>';
     $output .= '</div>';
 }
 $output .= '</div>'; // Close last floor container
@@ -43,3 +43,4 @@ echo $output;
 $stmt->close();
 $conn->close();
 ?>
+
