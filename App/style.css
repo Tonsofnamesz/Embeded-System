@@ -19,22 +19,16 @@ body {
     background-color: #2563eb; /* Darker blue on hover */
 }
 
-/* Container Styles */
-.container {
-    max-width: 800px; /* Maximum width for content */
-    margin: auto; /* Center the container */
+.flex-container {
+    display: flex;            /* Use Flexbox for layout */
+    flex-wrap: wrap;         /* Allow wrapping to the next line if space is insufficient */
+    justify-content: space-between; /* Space items evenly */
 }
 
-/* Floor Container Styles */
 .floor-container {
-    background-color: #e0f2fe; /* Light blue for floor containers */
-    border: 1px solid #3b82f6; /* Blue border */
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 10px; /* Space below each floor container */
-    display: inline-block; /* Align containers side by side */
-    width: calc(33% - 20px); /* Adjust width as needed */
-    box-sizing: border-box; /* Include padding and border in width calculation */
+    width: calc(33% - 10px); /* Set width to a third of the container, adjust as necessary */
+    margin: 5px;             /* Add some margin between items */
+    box-sizing: border-box;   /* Include padding and border in width calculation */
 }
 
 /* Floor Title Styles */
