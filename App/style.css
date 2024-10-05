@@ -1,71 +1,122 @@
-/* Layout for Add Floor section */
-#add-floor-section {
-    margin-top: 20px;
+/* Global Styles */
+body {
+    background-color: #f3f4f6; /* Gray background */
+    padding: 20px;
 }
 
-#add-floor-btn {
-    background-color: #007bff;
+/* Button Styles */
+.button {
+    background-color: #3b82f6; /* Blue background */
     color: white;
     padding: 10px 20px;
+    margin-right: 10px;
+    border-radius: 5px;
     border: none;
     cursor: pointer;
 }
 
-#add-floor-btn:hover {
-    background-color: #0056b3;
+.button:hover {
+    background-color: #2563eb; /* Darker blue on hover */
 }
 
-#add-floor-form {
-    margin-top: 15px;
+/* Container Styles */
+.container {
+    max-width: 800px; /* Maximum width for content */
+    margin: auto; /* Center the container */
 }
 
-#new-floor-info {
-    margin-top: 10px;
-    color: green;
-    font-weight: bold;
-}
-
-/* Adjusted floor display */
+/* Floor Container Styles */
 .floor-container {
-    background-color: white;
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin-bottom: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
+    background-color: #e0f2fe; /* Light blue for floor containers */
+    border: 1px solid #3b82f6; /* Blue border */
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px; /* Space below each floor container */
+    display: inline-block; /* Align containers side by side */
+    width: calc(33% - 20px); /* Adjust width as needed */
+    box-sizing: border-box; /* Include padding and border in width calculation */
 }
 
-h3 {
-    margin-top: 0;
+/* Floor Title Styles */
+.floor-title {
+    font-size: 1.25rem; /* Font size for floor title */
+    font-weight: bold; /* Make the title bold */
 }
 
+/* Toilet Box Styles */
 .toilet-box {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
+    display: flex; /* Align items in a row */
+    align-items: center; /* Center vertically */
+    margin-top: 10px; /* Spacing between toilet items */
 }
 
-.icon {
-    font-size: 24px;
-    margin-right: 10px;
+.gender-icon {
+    width: 20px;  /* Adjust the icon size */
+    height: 20px; /* Adjust the icon size */
+    margin-right: 10px; /* Spacing between icon and text */
 }
 
 .usage-count {
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 1.25rem; /* Font size for usage count */
+    font-weight: bold; /* Make count bold */
+    margin-right: 10px; /* Spacing before the reset button */
 }
 
-.reset-btn {
-    background-color: #ff3333;
+/* Button Styles for Reset and Delete */
+.reset-counter-btn,
+.delete-floor-btn {
+    background-color: #2563eb; /* Blue background for buttons */
     color: white;
     padding: 5px 10px;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
 }
 
-.reset-btn:hover {
-    background-color: #cc0000;
+.reset-counter-btn:hover,
+.delete-floor-btn:hover {
+    background-color: #1e40af; /* Darker blue on hover */
+}
+
+/* Form Styles */
+.form-section {
+    margin-top: 20px; /* Space above the form section */
+}
+
+.form-section input,
+.form-section select {
+    width: 100%; /* Full width for inputs and selects */
+    padding: 10px; /* Padding inside inputs and selects */
+    margin-top: 5px; /* Space above each input/select */
+    margin-bottom: 10px; /* Space below each input/select */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.form-section button {
+    width: 100%; /* Full width for form buttons */
+    background-color: #3b82f6; /* Blue background */
+    color: white;
+    padding: 10px; /* Padding for buttons */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer on hover */
+}
+
+.form-section button:hover {
+    background-color: #2563eb; /* Darker blue on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .floor-container {
+        width: calc(50% - 20px); /* Two columns on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .floor-container {
+        width: calc(100% - 20px); /* Single column on very small screens */
+    }
 }
 
