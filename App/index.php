@@ -11,17 +11,59 @@ $buildings = ['Gedung A', 'Gedung B', 'Gedung C', 'Gedung D'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Toilet Usage Tracker</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to the new styles.css -->
+    <link rel="stylesheet" href="style.css"> <!-- Link to the new styles.css -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- Link to Google Fonts -->
 </head>
 <body>
 
     <!-- Topbar with building buttons -->
-    <div class="mb-4">
+    <header class="mb-5 tabs">
         <?php foreach ($buildings as $index => $building): ?>
-            <button class="button building-btn" data-building="<?= $index + 1 ?>"><?= $building ?></button>
+            <input type="radio" id="radio-<?= $index + 1 ?>" name="building" <?= $index === 0 ? 'checked' : '' ?>>
+            <label for="radio-<?= $index + 1 ?>" class="tab building-btn" data-building="<?= $index + 1 ?>"><?= $building ?></label>
         <?php endforeach; ?>
+        <div class="glider"></div>
+        <!-- Circle with + symbol to add another building -->
+        <div id="add-building" class="circleAdd" onclick="showAddBuildingForm()">+</div>
+        <div class="srot mb-5">| S.R.O.T : ALPHA BUILD</div>
+    </header>
+
+    <!-- Form to add a new building (Initially hidden) -->
+    <div id="add-building-form" class="hidden">
+        <h3 class="building-title">Add a New Building</h3>
+        <form id="building-form">
+            <label for="building_name">Building Name:</label>
+            <input type="text" name="building_name" id="building_name" required>
+            <button type="submit">Submit</button>
+        </form>
     </div>
+
+    <script>
+        // Show the add building form when the circle is clicked
+        function showAddBuildingForm() {
+            document.getElementById('add-building-form').style.display = 'block';
+        }
+
+        // Handle form submission for adding a building
+        document.getElementById('building-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const buildingName = document.getElementById('building_name').value;
+            const xhr = new XMLHttpRequest();
+
+            xhr.open('POST', 'add_building.php', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.onload = function() {
+                if (this.status === 200) {
+                    alert(this.responseText);
+                    document.getElementById('add-building-form').style.display = 'none'; // Hide form after submission
+                    location.reload(); // Reload the page to show the new building
+                }
+            };
+            xhr.send(`building_name=${buildingName}`);
+        });
+    </script>
+
 
     <!-- Main content section to display floors and toilets -->
     <div id="content" class="container mb-4">
