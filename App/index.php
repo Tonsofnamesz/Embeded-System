@@ -12,6 +12,7 @@ $buildings = ['Gedung A', 'Gedung B', 'Gedung C', 'Gedung D'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Toilet Usage Tracker</title>
     <link rel="stylesheet" href="styles.css"> <!-- Link to the new styles.css -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- Link to Google Fonts -->
 </head>
 <body>
 
