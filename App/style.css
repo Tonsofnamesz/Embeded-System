@@ -1,116 +1,144 @@
 /* Global Styles */
 body {
-    background-color: #f3f4f6; /* Gray background */
+    background-color: #f9fafb; /* Lighter background */
+    padding: 20px;
+    font-family: 'Roboto', sans-serif; /* Clean and modern font */
+    color: #111827; /* Dark gray text */
+}
+
+.container {
+    max-width: 1200px; /* Max width for content */
+    margin: 0 auto; /* Center the content */
     padding: 20px;
 }
 
 /* Button Styles */
 .button {
-    background-color: #3b82f6; /* Blue background */
+    background-color: #2563eb; /* Darker blue for a modern look */
     color: white;
     padding: 10px 20px;
-    margin-right: 10px;
     border-radius: 5px;
     border: none;
     cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition */
 }
 
 .button:hover {
-    background-color: #2563eb; /* Darker blue on hover */
+    background-color: #1d4ed8; /* Slightly darker on hover */
+}
+
+.building-btn {
+    margin-bottom: 10px;
 }
 
 .flex-container {
-    display: flex;            /* Use Flexbox for layout */
-    flex-wrap: wrap;         /* Allow wrapping to the next line if space is insufficient */
-    justify-content: space-between; /* Space items evenly */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 15px; /* Consistent gap between items */
 }
 
+/* Card-like Floor Containers */
 .floor-container {
-    width: calc(33% - 10px); /* Set width to a third of the container, adjust as necessary */
-    margin: 5px;             /* Add some margin between items */
-    box-sizing: border-box;   /* Include padding and border in width calculation */
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow for a floating effect */
+    padding: 15px;
+    width: calc(33% - 20px); /* Three columns */
+    box-sizing: border-box;
+    margin-bottom: 20px;
 }
 
 /* Floor Title Styles */
 .floor-title {
-    font-size: 1.25rem; /* Font size for floor title */
-    font-weight: bold; /* Make the title bold */
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #374151; /* Dark gray */
 }
 
 /* Toilet Box Styles */
 .toilet-box {
-    display: flex; /* Align items in a row */
-    align-items: center; /* Center vertically */
-    margin-top: 10px; /* Spacing between toilet items */
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f3f4f6; /* Light background for each toilet */
+    border-radius: 8px;
 }
 
 .gender-icon {
-    width: 20px;  /* Adjust the icon size */
-    height: 20px; /* Adjust the icon size */
-    margin-right: 10px; /* Spacing between icon and text */
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
 }
 
 .usage-count {
-    font-size: 1.25rem; /* Font size for usage count */
-    font-weight: bold; /* Make count bold */
-    margin-right: 10px; /* Spacing before the reset button */
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2563eb; /* Matching the blue theme */
 }
 
-/* Button Styles for Reset and Delete */
 .reset-counter-btn,
 .delete-floor-btn {
-    background-color: #2563eb; /* Blue background for buttons */
+    background-color: #ef4444; /* Red button for delete */
     color: white;
     padding: 5px 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .reset-counter-btn:hover,
 .delete-floor-btn:hover {
-    background-color: #1e40af; /* Darker blue on hover */
+    background-color: #dc2626; /* Darker red on hover */
 }
 
 /* Form Styles */
 .form-section {
-    margin-top: 20px; /* Space above the form section */
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
 }
 
 .form-section input,
 .form-section select {
-    width: 100%; /* Full width for inputs and selects */
-    padding: 10px; /* Padding inside inputs and selects */
-    margin-top: 5px; /* Space above each input/select */
-    margin-bottom: 10px; /* Space below each input/select */
-    border: 1px solid #ccc; /* Light gray border */
-    border-radius: 5px; /* Rounded corners */
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #d1d5db; /* Light gray border */
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #f9fafb; /* Light input background */
 }
 
 .form-section button {
-    width: 100%; /* Full width for form buttons */
-    background-color: #3b82f6; /* Blue background */
+    width: 100%;
+    background-color: #10b981; /* Green background for the form button */
     color: white;
-    padding: 10px; /* Padding for buttons */
-    border: none; /* No border */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Pointer on hover */
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .form-section button:hover {
-    background-color: #2563eb; /* Darker blue on hover */
+    background-color: #059669; /* Darker green on hover */
 }
 
 /* Responsive Styles */
 @media (max-width: 768px) {
     .floor-container {
-        width: calc(50% - 20px); /* Two columns on smaller screens */
+        width: calc(50% - 15px); /* Two columns on medium screens */
     }
 }
 
 @media (max-width: 480px) {
     .floor-container {
-        width: calc(100% - 20px); /* Single column on very small screens */
+        width: 100%; /* One column on small screens */
     }
 }
-
