@@ -37,9 +37,9 @@ while ($row = $result->fetch_assoc()) {
     $gender_image = 'assets/images/default_icon.png'; // Fallback image in case of errors
 
     // Display male/female toilet usage with custom image
-    if ($row['label'] == 'Male') {
+    if ($row['label'] == 'male') {
         $gender_image = 'assets/images/male_icon.png';
-    } else if ($row['label'] == 'Female') {
+    } else if ($row['label'] == 'female') {
         $gender_image = 'assets/images/female_icon.png';
     }
 
