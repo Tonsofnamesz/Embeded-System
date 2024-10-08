@@ -12,101 +12,197 @@
 }
 
 body {
-    background-color: #f9fafb; /* Lighter background */
-    padding: 20px;
-    font-family: 'Roboto', sans-serif; /* Clean and modern font */
-    color: #111827; /* Dark gray text */
+  background-color: #f9fafb; /* Lighter background */
+  padding: 20px;
+  font-family: 'Roboto', sans-serif; /* Clean and modern font */
+  color: #111827; /* Dark gray text */
 }
 
 .container {
-    max-width: 1200px; /* Max width for content */
-    margin: 0 auto; /* Center the content */
-    padding: 20px;
+  max-width: 1200px; /* Max width for content */
+  margin: 0 auto; /* Center the content */
+  padding: 20px;
 }
 
 /* Button Styles */
 .button {
-    background-color: #2563eb; /* Darker blue for a modern look */
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease; /* Smooth transition */
+  background-color: #2563eb; /* Darker blue for a modern look */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition */
 }
 
 .button:hover {
-    background-color: #1d4ed8; /* Slightly darker on hover */
+  background-color: #1d4ed8; /* Slightly darker on hover */
 }
 
 .building-btn {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
+/* Card Feature */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: calc(33% - 20px); /* Adjust card width for 3 columns */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.card-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #374151;
+}
+
+.card-description {
+  font-size: 1rem;
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+.card-button {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.card-button:hover {
+  background-color: #1d4ed8;
+}
+
+/* Responsive Card Adjustments */
+@media (max-width: 768px) {
+  .card {
+    width: calc(50% - 20px); /* Two columns on medium screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 100%; /* Single column on small screens */
+  }
+}
+
+/* Continue existing styles */
+
 .flex-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 15px; /* Consistent gap between items */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start; /* Align all items to the start */
+  gap: 15px;
+  margin-top: 20px;
 }
 
 /* Card-like Floor Containers */
 .floor-container {
-    width: 100%; /* Make each floor container take full width */
-    margin-bottom: 20px; /* Space between floors */
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 /* Floor Title Styles */
 .floor-title {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #374151; /* Dark gray */
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #374151; /* Dark gray */
 }
 
 .toilet-box {
-    display: flex;
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center align content */
-    padding: 10px;
-    background-color: #f3f4f6; /* Light background */
-    border-radius: 8px;
-    text-align: center; /* Center text inside box */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  background-color: #f3f4f6;
+  border-radius: 8px;
+  width: calc(33% - 20px); /* 3 items per row with gap */
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .gender-icon {
-    width: 100%; /* Set the image to fill the width of the box */
-    height: auto; /* Maintain aspect ratio */
-    margin-bottom: 10px; /* Add space below the image */
+  width: 50%; /* Set the image to fill the width of the box */
+  height: auto; /* Maintain aspect ratio */
+  margin-bottom: 10px; /* Add space below the image */
 }
 
 .usage-count {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #2563eb; /* Matching blue theme */
-    margin-bottom: 10px; /* Add space below the usage count */
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2563eb;
+  margin-bottom: 10px;
 }
 
 .reset-counter-btn {
-    background-color: #ef4444; /* Red button for reset */
-    color: white;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 100%; /* Button width to match the box */
+  background-color: #ef4444;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
 }
 
 .reset-counter-btn:hover {
-    background-color: #dc2626; /* Darker red on hover */
+  background-color: #dc2626;
+}
+
+@media (max-width: 768px) {
+  .toilet-box {
+    width: calc(50% - 15px); /* Two columns on medium screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .toilet-box {
+    width: 100%; /* Single column on small screens */
+  }
 }
 
 .toilet-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px; /* Gap between toilet boxes */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Add some gap between the rows */
 }
+
+/* Additional styles and responsive adjustments... */
+
 
 .delete-floor-btn {
     background-color: #ef4444; /* Red button for delete */

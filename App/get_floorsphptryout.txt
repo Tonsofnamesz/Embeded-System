@@ -74,4 +74,3 @@ echo $output;
 $stmt->close();
 $conn->close();
 ?>
-
