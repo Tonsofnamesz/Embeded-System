@@ -52,13 +52,8 @@ body {
 
 /* Card-like Floor Containers */
 .floor-container {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow for a floating effect */
-    padding: 15px;
-    width: calc(33% - 20px); /* Three columns */
-    box-sizing: border-box;
-    margin-bottom: 20px;
+    width: 100%; /* Make each floor container take full width */
+    margin-bottom: 20px; /* Space between floors */
 }
 
 /* Floor Title Styles */
@@ -69,30 +64,50 @@ body {
     color: #374151; /* Dark gray */
 }
 
-/* Toilet Box Styles */
 .toilet-box {
     display: flex;
-    align-items: center;
-    margin-top: 10px;
-    justify-content: space-between;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center align content */
     padding: 10px;
-    background-color: #f3f4f6; /* Light background for each toilet */
+    background-color: #f3f4f6; /* Light background */
     border-radius: 8px;
+    text-align: center; /* Center text inside box */
 }
 
 .gender-icon {
-    width: 24px;
-    height: 24px;
-    margin-right: 10px;
+    width: 100%; /* Set the image to fill the width of the box */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 10px; /* Add space below the image */
 }
 
 .usage-count {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #2563eb; /* Matching the blue theme */
+    color: #2563eb; /* Matching blue theme */
+    margin-bottom: 10px; /* Add space below the usage count */
 }
 
-.reset-counter-btn,
+.reset-counter-btn {
+    background-color: #ef4444; /* Red button for reset */
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Button width to match the box */
+}
+
+.reset-counter-btn:hover {
+    background-color: #dc2626; /* Darker red on hover */
+}
+
+.toilet-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Gap between toilet boxes */
+}
+
 .delete-floor-btn {
     background-color: #ef4444; /* Red button for delete */
     color: white;
