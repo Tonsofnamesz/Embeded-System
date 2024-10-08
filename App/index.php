@@ -51,16 +51,18 @@ $buildings = ['Gedung A', 'Gedung B', 'Gedung C', 'Gedung D'];
             const buildingName = document.getElementById('building_name').value;
             const xhr = new XMLHttpRequest();
 
-            xhr.open('POST', 'add_building.php', true);
-            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-            xhr.onload = function() {
-                if (this.status === 200) {
-                    alert(this.responseText);
-                    document.getElementById('add-building-form').style.display = 'none'; // Hide form after submission
-                    location.reload(); // Reload the page to show the new building
-                }
-            };
-            xhr.send(`building_name=${buildingName}`);
+            // Ryan might need to tweek something here biar gk salah
+                  
+            // xhr.open('POST', 'add_building.php', true);
+            // xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            // xhr.onload = function() {
+            //     if (this.status === 200) {
+            //         alert(this.responseText);
+            //         document.getElementById('add-building-form').style.display = 'none'; // Hide form after submission
+            //         location.reload(); // Reload the page to show the new building
+            //     }
+            // };
+            // xhr.send(`building_name=${buildingName}`);
         });
     </script>
 
