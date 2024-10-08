@@ -1,5 +1,17 @@
 <?php
-include 'db.php';
+// Database credentials
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "embedandpervasive";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
 $building_id = $_GET['building_id'];
 
@@ -28,6 +40,7 @@ while ($row = $result->fetch_assoc()) {
         // Set a background color
         $output .= '<div class="floor-container">'; // Set width for consistent sizing
         $output .= '<h3 class="floor-title">Floor ' . $row['floor_number'] . '</h3>'; // Floor heading
+        // Delete Floor button
         $output .= '<button class="delete-floor-btn" onclick="deleteFloor(' . $row['floor_id'] . ')">Delete Floor</button>'; // Delete button
         $current_floor = $row['floor_id'];
         $output .= '<div class="toilet-row">'; // Start a new row for toilets
@@ -37,19 +50,21 @@ while ($row = $result->fetch_assoc()) {
     $gender_image = 'assets/images/default_icon.png'; // Fallback image in case of errors
 
     // Display male/female toilet usage with custom image
-    if ($row['label'] == 'Male') {
-        $gender_image = 'assets/images/male_icon.png';
-    } else if ($row['label'] == 'Female') {
-        $gender_image = 'assets/images/female_icon.png';
+    if ($row['label'] == 'male') {
+        $gender_image = 'assets\images\male_icon.png';
+    } else if ($row['label'] == 'female') {
+        $gender_image = 'assets\images\female_icon.png';
     }
 
     // Add CSS classes for the toilet box
     $output .= '<div class="toilet-box">'; // Center align the items
     $output .= '<img class="gender-icon" src="' . $gender_image . '" alt="' . $row['label'] . ' Toilet" style="width: 100px; height: 100px;">';
     $output .= '<span class="usage-count">' . $row['usage_count'] . '</span>'; // Usage count
+    // Reset Counter button
     $output .= '<button class="reset-counter-btn" onclick="resetCounter(' . $row['toilet_id'] . ')">Reset Counter</button>'; // Reset counter button
     $output .= '</div>'; // Close toilet box
 }
+
 $output .= '</div>'; // Close last toilet row
 $output .= '</div>'; // Close last floor container
 $output .= '</div>'; // Close the main container for all floors
