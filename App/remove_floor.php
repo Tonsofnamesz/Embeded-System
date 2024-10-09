@@ -2,22 +2,40 @@
 include 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $floor_id = $_POST['floor_id'];
+    if (isset($_POST['floor_id'])) {
+        $floor_id = $_POST['floor_id'];
 
-    // Delete the floor (and cascade delete the associated toilets)
-    $sql = "DELETE FROM floors WHERE id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $floor_id);
+        // Start a transaction
+        $conn->begin_transaction();
 
-    if ($stmt->execute()) {
-        echo "Floor successfully removed.";
+        try {
+            // First, delete all toilets associated with the floor
+            $stmt = $conn->prepare("DELETE FROM toilets WHERE floor_id = ?");
+            $stmt->bind_param("i", $floor_id);
+            $stmt->execute();
+            $stmt->close();
+
+            // Now delete the floor
+            $stmt = $conn->prepare("DELETE FROM floors WHERE id = ?");
+            $stmt->bind_param("i", $floor_id);
+            $stmt->execute();
+            $stmt->close();
+
+            // Commit the transaction
+            $conn->commit();
+            echo "Floor and associated toilets deleted successfully.";
+        } catch (Exception $e) {
+            // Rollback the transaction if something goes wrong
+            $conn->rollback();
+            echo "Error: " . $e->getMessage();
+        }
     } else {
-        echo "Error removing floor: " . $stmt->error;
+        echo "Error: Missing floor ID.";
     }
-
-    $stmt->close();
-    $conn->close();
 } else {
-    echo "Invalid request.";
+    echo "No POST data received.";
 }
+
+$conn->close();
 ?>
+
