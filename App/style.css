@@ -266,17 +266,25 @@ body {
     }
 }
   
-  .tabs {
+.tabs {
     display: flex;
     position: relative;
     background-color: #fff;
     box-shadow: 0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15);
     padding: 0.75rem;
     border-radius: 99px;
-  }
-  .tabs * {
+}
+
+.tabs * {
     z-index: 2;
-  }
+}
+.tab:hover {
+    color: rgb(39, 42, 190);
+    background-color: #f3f4f6;
+    transition: color 0.3s ease, background-color 0.3s ease; 
+    border-radius: 99px;
+}
+
   
   input[type=radio] {
     display: none;
