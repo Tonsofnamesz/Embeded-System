@@ -165,6 +165,22 @@ $buildings = ['Gedung A', 'Gedung B', 'Gedung C', 'Gedung D'];
                 xhr.send(`floor_id=${floorId}`);
             }
         }
+        
+        function resetCounter(toilet_id) {
+            if (confirm('Are you sure you want to reset the usage count for this toilet?')) {
+                const xhr = new XMLHttpRequest();
+                xhr.open("POST", "reset_counter.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        alert(xhr.responseText);
+                        location.reload(); // Reload to reflect changes
+                    }
+                };
+                xhr.send("toilet_id=" + toilet_id);
+            }
+        }        
+
     </script>
 
 </body>
