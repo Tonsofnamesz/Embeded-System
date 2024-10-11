@@ -181,8 +181,24 @@ $buildings = ['Gedung A', 'Gedung B', 'Gedung C', 'Gedung D'];
             }
         }        
 
-    </script>
-
+        </script>
+        <script src="/socket.io/socket.io.js"></script>
+        
+        <script>
+            // Connect to the Socket.IO server
+            const socket = io('http://localhost:3000');
+            // Listen for usage updates
+            socket.on('usageUpdate', function(data) {
+                // Update your web page with the latest data (e.g., update the usage counter)
+                console.log(data); // Log the data to check the structure
+                data.forEach(function(toilet) {
+                    const counterElement = document.getElementById('usage-count-' + toilet.id); // Assuming you have usage count elements with IDs like 'usage-count-1'
+                    if (counterElement) {
+                        counterElement.textContent = toilet.usage_count; // Update the usage count dynamically
+                    }
+                });
+            });
+        </script>
 </body>
 </html>
 
