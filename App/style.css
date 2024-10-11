@@ -126,28 +126,18 @@ header {
 
 /* Continue existing styles */
 
-.floor-list {
-  display: flex;              /* Keep the flexbox layout for the main container */
-  flex-direction: column;     /* Arrange floors in a column */
-  padding: 10px;             /* Optional: add padding around the container */
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start; /* Align all items to the start */
+  gap: 15px;
+  margin-top: 20px;
 }
-
 
 /* Card-like Floor Containers */
 .floor-container {
-  margin-bottom: 20px;       /* Space between floor containers */
-  padding: 10px;             /* Padding inside each floor container */
-  background-color: #f9f9f9; /* Optional: background color */
-}
-
-.toilet-row {
-  display: flex;             /* Use flexbox for toilets in a row */
-  margin-top: 40px;         /* Space above the toilet row */
-}
-
-.toilet-box {
-  margin-right: 10px;       /* Space between toilet boxes */
-  text-align: center;       /* Center align content in toilet box */
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 /* Floor Title Styles */
@@ -211,6 +201,11 @@ header {
   }
 }
 
+.toilet-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Add some gap between the rows */
+}
 
 /* Additional styles and responsive adjustments... */
 
@@ -402,5 +397,3 @@ input[id=radio-4]:checked ~ .glider {
       display: none;
     }
 }
-
-

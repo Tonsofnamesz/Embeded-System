@@ -28,7 +28,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 $current_floor = -1;
-$output = '<div class="floor-list">'; // Wrap everything in a container for vertical stacking
+$output = '<div class="flex-container">'; // Flex container for all floors
 
 while ($row = $result->fetch_assoc()) {
     // New floor container
@@ -37,13 +37,14 @@ while ($row = $result->fetch_assoc()) {
             $output .= '</div>'; // Close previous floor container
         }
 
-        $output .= '<div class="floor-container">'; // Start new floor container
+        // Set a background color
+        $output .= '<div class="floor-container">'; // Set width for consistent sizing
         $output .= '<h3 class="floor-title">Floor ' . $row['floor_number'] . '</h3>'; // Floor heading
+        // Delete Floor button
         $output .= '<button class="delete-floor-btn" onclick="deleteFloor(' . $row['floor_id'] . ')">Delete Floor</button>'; // Delete button
         $current_floor = $row['floor_id'];
         $output .= '<div class="toilet-row">'; // Start a new row for toilets
     }
-
 
     // Initialize gender_image with a default value
     $gender_image = 'assets/images/default_icon.png'; // Fallback image in case of errors
@@ -56,12 +57,13 @@ while ($row = $result->fetch_assoc()) {
     }
 
     // Add CSS classes for the toilet box (3-column layout)
-    $output .= '<div class="floor-container">'; // Start new floor container
-        $output .= '<h3 class="floor-title">Floor ' . $row['floor_number'] . '</h3>'; // Floor heading
-        $output .= '<button class="delete-floor-btn" onclick="deleteFloor(' . $row['floor_id'] . ')">Delete Floor</button>'; // Delete button
-        $current_floor = $row['floor_id'];
-        $output .= '<div class="toilet-row">'; // Start a new row for toilets
-    }
+    $output .= '<div class="toilet-box">'; // 3 columns layout
+    $output .= '<img class="gender-icon" src="' . $gender_image . '" alt="' . $row['label'] . ' Toilet">';
+    $output .= '<span class="usage-count">' . $row['usage_count'] . '</span>'; // Usage count
+    // Reset Counter button
+    $output .= '<button class="reset-counter-btn" onclick="resetCounter(' . $row['toilet_id'] . ')">Reset</button>'; // Reset counter button
+    $output .= '</div>'; // Close toilet box
+}
 
 $output .= '</div>'; // Close last toilet row
 $output .= '</div>'; // Close last floor container
@@ -72,4 +74,3 @@ echo $output;
 $stmt->close();
 $conn->close();
 ?>
-
