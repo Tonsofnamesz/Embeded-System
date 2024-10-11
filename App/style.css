@@ -16,12 +16,18 @@ body {
   padding: 20px;
   font-family: 'Roboto', sans-serif; /* Clean and modern font */
   color: #111827; /* Dark gray text */
+  margin: 0;
 }
 
 .container {
   max-width: 1200px; /* Max width for content */
   margin: 0 auto; /* Center the content */
   padding: 20px;
+}
+
+header {
+  margin: 0;
+  padding: 0;
 }
 
 /* Button Styles */
@@ -120,18 +126,28 @@ body {
 
 /* Continue existing styles */
 
-.flex-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: start; /* Align all items to the start */
-  gap: 15px;
-  margin-top: 20px;
+.floor-list {
+  display: flex;              /* Keep the flexbox layout for the main container */
+  flex-direction: column;     /* Arrange floors in a column */
+  padding: 10px;             /* Optional: add padding around the container */
 }
+
 
 /* Card-like Floor Containers */
 .floor-container {
-  width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 20px;       /* Space between floor containers */
+  padding: 10px;             /* Padding inside each floor container */
+  background-color: #f9f9f9; /* Optional: background color */
+}
+
+.toilet-row {
+  display: flex;             /* Use flexbox for toilets in a row */
+  margin-top: 40px;         /* Space above the toilet row */
+}
+
+.toilet-box {
+  margin-right: 10px;       /* Space between toilet boxes */
+  text-align: center;       /* Center align content in toilet box */
 }
 
 /* Floor Title Styles */
@@ -195,11 +211,6 @@ body {
   }
 }
 
-.toilet-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px; /* Add some gap between the rows */
-}
 
 /* Additional styles and responsive adjustments... */
 
@@ -267,24 +278,21 @@ body {
 }
   
 .tabs {
-    display: flex;
-    position: relative;
-    background-color: #fff;
-    box-shadow: 0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15);
-    padding: 0.75rem;
-    border-radius: 99px;
+  display: flex;
+  position: relative;
+  background-color: rgba(11, 81, 187, 0.541); /* Blue with 80% transparency */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow */
+  padding: 0.75rem;
+  border-radius: 0; /* Rectangular shape */
 }
 
 .tabs * {
     z-index: 2;
 }
 .tab:hover {
-    color: rgb(39, 42, 190);
-    background-color: #f3f4f6;
-    transition: color 0.3s ease, background-color 0.3s ease; 
-    border-radius: 99px;
+  color: rgb(39, 42, 190);
+  background-color: rgba(255, 255, 255, 0.2); /* Lighter background on hover */
 }
-
   
   input[type=radio] {
     display: none;
@@ -297,12 +305,12 @@ body {
     height: 54px;
     width: 200px;
     font-size: 1.5rem;
-    font-weight: 500;
-    border-radius: 99px;
-    font-weight: bold; 
+    font-weight: bold;
+    border-radius: 5px; /* Subtle rounded corners */
     cursor: pointer;
-    transition: color 0.15s ease-in;
-  }
+    transition: color 0.3s ease, background-color 0.3s ease;
+    color: white; /* White text */
+}
   
   input[type=radio]:checked + label {
     color: var(--primary-color);
@@ -350,23 +358,23 @@ input[id=radio-4]:checked ~ .glider {
   .hidden {
     display: none;
 }
-  .circleAdd {
-    display: flex;
-    position: relative;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 45px;
-    border-radius: 60%;
-    background-color: #d9d9d9;
-    color: rgb(26, 26, 26);
-    text-align: center;
-    line-height: 45px;
-    font-size: 1.55rem;
-    font-weight: bold; 
-    cursor: pointer;
-    margin-left: 80px;         
-    margin-top: 4px;            
+.circleAdd {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 45px;
+  border-radius: 50%; /* Makes it a circle */
+  background-color: white;
+  color: blue;
+  text-align: center;
+  line-height: 45px;
+  font-size: 1.55rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 80px;
+  margin-top: 4px;
 }
 
   @media (max-width: 700px) {
@@ -375,16 +383,15 @@ input[id=radio-4]:checked ~ .glider {
     }
   }
   
-.srot {
+  .srot {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 54px;
     width: 700px;
     font-size: 2.5rem;
-    font-weight: 500;
-    border-radius: 99px;
-    font-weight: bold; 
+    font-weight: bold;
+    color: white; /* White text */
     margin-left: 0px;
     margin-top: -2px;
 }
