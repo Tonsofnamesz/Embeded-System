@@ -34,7 +34,7 @@ while ($row = $result->fetch_assoc()) {
     // New floor container
     if ($current_floor != $row['floor_id']) {
         if ($current_floor != -1) {
-            $output .= '</div>'; // Close previous floor container
+            $output .= '</div><br>'; // Close previous floor container and add a line break
         }
 
         // Set a background color

@@ -11,11 +11,11 @@ $buildings = ['Gedung A', 'Gedung B', 'Gedung C', 'Gedung D'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Toilet Usage Tracker</title>
-    <link rel="stylesheet" href="style.css"> <!-- Link to the new styles.css -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="background.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- Link to Google Fonts -->
 </head>
 <body>
-
     <!-- Topbar with building buttons -->
     <header class="mb-5 tabs">
         <?php foreach ($buildings as $index => $building): ?>
@@ -29,12 +29,14 @@ $buildings = ['Gedung A', 'Gedung B', 'Gedung C', 'Gedung D'];
     </header>
 
     <!-- Form to add a new building (Initially hidden) -->
+     <!-- Coming soon Feature -->
     <div id="add-building-form" class="hidden">
-        <h3 class="building-title">Add a New Building</h3>
+        <h11> Coming soon!</h1>
+        <!-- <h3 class="building-title">Add a New Building</h3>
         <form id="building-form">
             <label for="building_name">Building Name:</label>
             <input type="text" name="building_name" id="building_name" required>
-            <button type="submit">Submit</button>
+            <button type="submit">Submit</button> -->
         </form>
     </div>
 
@@ -67,14 +69,18 @@ $buildings = ['Gedung A', 'Gedung B', 'Gedung C', 'Gedung D'];
     </script>
 
 
-    <!-- Main content section to display floors and toilets -->
     <div id="content" class="container mb-4">
-        <!-- Content dynamically loaded here -->
+        <!-- Your dynamically loaded content will appear here -->
+        <!-- This div will now have a rounded white box appearance -->
     </div>
+
 
     <!-- Add Floor button -->
     <div id="add-floor-section" class="form-section">
-        <button id="add-floor-btn" class="button">Add Floor</button>
+        <button id="add-floor-btn" class="button">
+            <span style="font-size: 200px;">+</span><br>
+            <span style="font-size: 25px;">Add Floor</span>
+        </button>
 
         <!-- Form to add a new floor (Initially hidden) -->
         <div id="add-floor-form" class="mt-4 hidden">
