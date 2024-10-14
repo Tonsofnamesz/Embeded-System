@@ -19,10 +19,25 @@ body {
   margin: 0;
 }
 
+#content {
+  background-color: rgba(255, 255, 255, 0.9); /* White with slight transparency */
+  border-radius: 15px; /* Rounded corners */
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 1200px; /* Optional, adjust the width as needed */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Adds a slight shadow for depth */
+}
+
+/* Optional: If you want the content to always take a specific percentage of the height */
+#content {
+  min-height: 300px; /* Minimum height */
+}
+
 .container {
   max-width: 1200px; /* Max width for content */
   margin: 0 auto; /* Center the content */
   padding: 20px;
+  
 }
 
 header {
@@ -132,12 +147,10 @@ header {
   justify-content: start; /* Align all items to the start */
   gap: 15px;
   margin-top: 20px;
-}
-
-/* Card-like Floor Containers */
-.floor-container {
-  width: 100%;
+  width: 150%;
   margin-bottom: 20px;
+  display: inline-block;
+  padding: 20px;
 }
 
 /* Floor Title Styles */
@@ -179,10 +192,11 @@ header {
   color: white;
   padding: 5px 10px;
   border: none;
-  border-radius: 5px;
+  border-radius: 15px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  width: 100%;
+  width: 25%;
+  font-size: 20px; /* Set font size to 20px */
 }
 
 .reset-counter-btn:hover {
@@ -215,7 +229,7 @@ header {
     color: white;
     padding: 5px 10px;
     border: none;
-    border-radius: 5px;
+    border-radius: 15px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -227,84 +241,88 @@ header {
 
 /* Form Styles */
 .form-section {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  width: 100%; /* Full width */
+  max-width: 600px; /* Optional, adjust as needed */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .form-section input,
 .form-section select {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    border: 1px solid #d1d5db; /* Light gray border */
-    border-radius: 5px;
-    font-size: 1rem;
-    background-color: #f9fafb; /* Light input background */
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #d1d5db; /* Light gray border */
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #f9fafb; /* Light input background */
 }
 
 .form-section button {
-    width: 100%;
-    background-color: #10b981; /* Green background for the form button */
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
+  width: 100%;
+  background-color: #10b981; /* Green background for the form button */
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .form-section button:hover {
-    background-color: #059669; /* Darker green on hover */
+  background-color: #059669; /* Darker green on hover */
 }
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-    .floor-container {
-        width: calc(50% - 15px); /* Two columns on medium screens */
-    }
+  .form-section {
+    width: calc(100% - 40px); /* Adjust width for medium screens */
+  }
 }
 
 @media (max-width: 480px) {
-    .floor-container {
-        width: 100%; /* One column on small screens */
-    }
+  .form-section {
+    width: calc(100% - 20px); /* Adjust width for small screens */
+  }
 }
   
 .tabs {
   display: flex;
   position: relative;
-  background-color: rgba(11, 81, 187, 0.541); /* Blue with 80% transparency */
+  background-color: rgba(255, 255, 255, 0.301); /* Blue with 80% transparency */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow */
   padding: 0.75rem;
-  border-radius: 0; /* Rectangular shape */
+  border-radius: 5px; /* Rectangular shape */
 }
-
 .tabs * {
-    z-index: 2;
+  z-index: 2;
 }
 .tab:hover {
   color: rgb(39, 42, 190);
+  border-radius: 99px; /* Same rounded corners as the glider */
   background-color: rgba(255, 255, 255, 0.2); /* Lighter background on hover */
 }
   
-  input[type=radio] {
-    display: none;
-  }
+input[type=radio] {
+  display: none;
+}
   
-  .tab {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 54px;
-    width: 200px;
-    font-size: 1.5rem;
-    font-weight: bold;
-    border-radius: 5px; /* Subtle rounded corners */
-    cursor: pointer;
-    transition: color 0.3s ease, background-color 0.3s ease;
-    color: white; /* White text */
+.tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 54px;
+  width: 200px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 99px; /* Subtle rounded corners */
+  cursor: pointer;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  color: white; /* White text */
 }
   
   input[type=radio]:checked + label {
@@ -353,24 +371,77 @@ input[id=radio-4]:checked ~ .glider {
   .hidden {
     display: none;
 }
-.circleAdd {
+/* Add this to your existing CSS */
+
+/* Circle Add Styles */
+.circleAdd-container {
   display: flex;
   position: relative;
   align-items: center;
   justify-content: center;
+  gap: 10px; /* Adjust gap as needed */
+}
+
+.circleAdd {
+  position: relative;
   width: 50px;
-  height: 45px;
-  border-radius: 50%; /* Makes it a circle */
+  height: 50px;
+  border-radius: 50%;
   background-color: white;
   color: blue;
   text-align: center;
-  line-height: 45px;
+  line-height: 50px;
   font-size: 1.55rem;
   font-weight: bold;
   cursor: pointer;
-  margin-left: 80px;
-  margin-top: 4px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  z-index: 2;
+  left: 20px; 
 }
+
+.circleAdd:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+input[type=radio].circle-radio {
+  display: none;
+}
+
+input[type=radio].circle-radio:checked + .circleAdd {
+  color: var(--primary-color);
+}
+
+.circle-glider {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: var(--secondary-color);
+  border-radius: 50%;
+  z-index: 1;
+  transition: 0.25s ease-out;
+  transform: translateX(0);
+}
+
+/* Add this to your existing media queries if needed */
+@media (max-width: 700px) {
+  .circleAdd-container {
+    transform: scale(0.6);
+  }
+}
+
+/* Example usage */
+.circleAdd-container input[id=circle-radio-1]:checked ~ .circle-glider {
+  transform: translateX(0);
+}
+
+.circleAdd-container input[id=circle-radio-2]:checked ~ .circle-glider {
+  transform: translateX(60px); /* Adjust based on gap */
+}
+
+.circleAdd-container input[id=circle-radio-3]:checked ~ .circle-glider {
+  transform: translateX(120px); /* Adjust based on gap */
+}
+
 
   @media (max-width: 700px) {
     .tabs {
@@ -387,9 +458,9 @@ input[id=radio-4]:checked ~ .glider {
     font-size: 2.5rem;
     font-weight: bold;
     color: white; /* White text */
-    margin-left: 0px;
+    margin-left: auto; /* Push to the right */
     margin-top: -2px;
-}
+  }
 
 @media (max-width: 1200px) {
     .circleAdd, .srot {
