@@ -207,6 +207,3 @@ $buildings = ['Gedung A', 'Gedung B', 'Gedung C', 'Gedung D'];
         </script>
 </body>
 </html>
-
-
-
