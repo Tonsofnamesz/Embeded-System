@@ -14,6 +14,7 @@ $buildings = ['Gedung A', 'Gedung B', 'Gedung C', 'Gedung D'];
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="background.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- Link to Google Fonts -->
+    <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
     <!-- Topbar with building buttons -->
@@ -192,15 +193,15 @@ $buildings = ['Gedung A', 'Gedung B', 'Gedung C', 'Gedung D'];
         
         <script>
             // Connect to the Socket.IO server
-            const socket = io('http://localhost:3000');
-            // Listen for usage updates
+            const socket = io('http://localhost:3000'); // Adjust the URL to your Node.js server
+            // Listen for real-time updates from the server
             socket.on('usageUpdate', function(data) {
-                // Update your web page with the latest data (e.g., update the usage counter)
-                console.log(data); // Log the data to check the structure
+                console.log('Real-time data received:', data); // Log data for debugging
                 data.forEach(function(toilet) {
-                    const counterElement = document.getElementById('usage-count-' + toilet.id); // Assuming you have usage count elements with IDs like 'usage-count-1'
-                    if (counterElement) {
-                        counterElement.textContent = toilet.usage_count; // Update the usage count dynamically
+                    // Update the usage count for the specific toilet in the DOM
+                    const usageElement = document.querySelector(`.toilet-box [data-toilet-id="${toilet.id}"] .usage-count`);
+                    if (usageElement) {
+                        usageElement.textContent = toilet.usage_count; // Update the usage count dynamically
                     }
                 });
             });
