@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
     <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
-    
+    <!-- sigma -->
     <!-- Topbar with building buttons -->
     <header class="mb-5 tabs">
         <?php foreach ($buildings as $index => $building): ?>
