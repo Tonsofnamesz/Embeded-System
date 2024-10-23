@@ -4,14 +4,21 @@ include 'db.php';
 
 // Check if user is logged in and get their role
 if (!isset($_SESSION['role'])) {
-    header("Location: login.php");
+    header("Location: index.php");
     exit();
 }
 $role = $_SESSION['role'];
-$username = $_SESSION['username']; // Assuming you store the username in the session as well
+$username = $_SESSION['username']; 
 
 // Fetch buildings (for the Add Floor functionality)
 $buildings = ['Gedung A', 'Gedung B', 'Gedung C', 'Gedung D'];
+
+// Handle logout
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
+    session_destroy();
+    header("Location: index.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
