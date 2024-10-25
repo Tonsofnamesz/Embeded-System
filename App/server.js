@@ -1,4 +1,3 @@
-// Import necessary libraries
 const express = require('express');
 const http = require('http');
 const socketIO = require('socket.io');
@@ -19,7 +18,7 @@ const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'embedandpervasive'  // Replace with your database name
+    database: 'embedandpervasive'
 });
 
 db.connect((err) => {

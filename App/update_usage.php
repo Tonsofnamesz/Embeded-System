@@ -1,17 +1,15 @@
 <?php
-// Include the database connection
 include 'db.php';
 
 // Check if POST data is received
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Check if all necessary parameters are present
     if (isset($_POST['building'], $_POST['floor'], $_POST['gender'], $_POST['counter'])) {
         $building = $_POST['building'];
         $floor = $_POST['floor'];
         $gender = $_POST['gender'];
-        $counter = intval($_POST['counter']); // Ensure counter is treated as an integer
+        $counter = intval($_POST['counter']);
 
-        // Find the gender ID from the database
+        // Find gender ID from the database
         $stmt = $conn->prepare("SELECT id FROM gender WHERE label = ?");
         $stmt->bind_param("s", $gender);
         $stmt->execute();
@@ -21,7 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $row = $result->fetch_assoc();
             $gender_id = $row['id'];
 
-            // Update the usage_count in the toilets table for the corresponding building, floor, and gender
             $stmt = $conn->prepare("
                 UPDATE toilets 
                 INNER JOIN floors ON toilets.floor_id = floors.id 
@@ -51,7 +48,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo "No POST data received.";
 }
 
-// Close the database connection
 $conn->close();
 ?>
-

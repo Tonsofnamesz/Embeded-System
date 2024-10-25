@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             // Send a request to the ESP32 to reset its counter
             $esp32_ip = "192.168.237.215"; // Replace with ESP32's actual IP address
-            $url = "http://$esp32_ip/reset_counter"; // Adjust as needed
+            $url = "http://$esp32_ip/reset_counter";
             $esp32_response = file_get_contents($url);
 
             if ($esp32_response === FALSE) {

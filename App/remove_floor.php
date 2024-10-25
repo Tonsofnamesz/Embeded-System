@@ -5,17 +5,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['floor_id'])) {
         $floor_id = $_POST['floor_id'];
 
-        // Start a transaction
+        // Start transaction
         $conn->begin_transaction();
 
         try {
-            // First, delete all toilets associated with the floor
+            // Delete all toilets associated with the floor
             $stmt = $conn->prepare("DELETE FROM toilets WHERE floor_id = ?");
             $stmt->bind_param("i", $floor_id);
             $stmt->execute();
             $stmt->close();
 
-            // Now delete the floor
+            // Delete the floor
             $stmt = $conn->prepare("DELETE FROM floors WHERE id = ?");
             $stmt->bind_param("i", $floor_id);
             $stmt->execute();
@@ -38,4 +38,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 $conn->close();
 ?>
-

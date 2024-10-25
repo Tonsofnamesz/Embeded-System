@@ -11,7 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bind_param("ii", $building_id, $floor_number);
 
     if ($stmt->execute()) {
-        // Get the last inserted floor ID
         $floor_id = $stmt->insert_id;
 
         // Variables for gender IDs
@@ -28,7 +27,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $buildings = ['Gedung A', 'Gedung B', 'Gedung C', 'Gedung D'];
             $building_name = $buildings[$building_id - 1];
 
-            // Success message
             echo "New floor added: $building_name, Floor $floor_number. Male and Female toilets initialized.";
         } else {
             echo "Error adding toilets: " . $stmt_toilets->error;

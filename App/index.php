@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'db.php'; // Database connection
+include 'db.php';
 
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -42,7 +42,7 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="RajaG.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="RajaG.css">
 </head>
 <body>
 
@@ -60,7 +60,6 @@ $conn->close();
             </form>
         </div>
         
-        <!-- Add a toggle panel if you want to include a Sign-Up option or additional content -->
         <div class="toggle-container">
             <div class="toggle">
                 <div class="toggle-panel toggle-right">

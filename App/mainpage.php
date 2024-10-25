@@ -10,7 +10,7 @@ if (!isset($_SESSION['role'])) {
 $role = $_SESSION['role'];
 $username = $_SESSION['username']; 
 
-// Fetch buildings (for the Add Floor functionality)
+// Fetch buildings
 $buildings = ['Gedung A', 'Gedung B', 'Gedung C', 'Gedung D'];
 
 // Handle logout
@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
             <div class="srot mb-5">| S.R.O.T : ALPHA BUILD</div>
         </header>
         
-    <!-- Topbar with user info, role, and logout button -->
+    <!-- Topbar with user info -->
         <header class="topbar">
             <div class="user-info">
                 <span>Logged in as: <strong><?= $username ?></strong> (<em><?= ucfirst($role) ?></em>)</span>
@@ -58,20 +58,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
             </div>
         </header>
 
-    <!-- Form to add a new building (Initially hidden) -->
+    <!-- Form to add a new building  -->
     <div id="add-building-form" class="hidden">
         <h11> Coming soon!</h1>
     </div>
 
     <script>
-        // Show the add building form when the circle is clicked (admin only)
+        // Add building form (admin only)
         function showAddBuildingForm() {
             document.getElementById('add-building-form').style.display = 'block';
         }
     </script>
 
     <div id="content" class="container mb-4">
-        <!-- Your dynamically loaded content will appear here -->
+        
     </div>
 
     <!-- Admin only: Add Floor button -->
@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
             <span style="font-size: 25px;">Add Floor</span>
         </button>
 
-        <!-- Form to add a new floor (Initially hidden) -->
+        <!-- Form to add a new floor -->
         <div id="add-floor-form" class="mt-4 hidden">
             <h3 class="floor-title">Add a New Floor</h3>
             <form id="floor-form">
@@ -104,9 +104,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
     <?php endif; ?>
 
     <script>
-        // Load default building (Gedung A) on page load
         window.onload = function() {
-            loadBuilding(1); // Default to building 1 (Gedung A)
+            loadBuilding(1); // Default to building 1
         };
 
         function loadBuilding(buildingId) {
@@ -120,7 +119,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
             xhr.send();
         }
 
-        // Attach event listeners to building buttons
         document.querySelectorAll('.building-btn').forEach(button => {
             button.addEventListener('click', function() {
                 const buildingId = this.getAttribute('data-building');
@@ -148,7 +146,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
                 if (this.status === 200) {
                     document.getElementById('new-floor-info').innerHTML = this.responseText;
                     document.getElementById('add-floor-form').style.display = 'none'; // Hide form after submission
-                    loadBuilding(buildingId); // Reload the floors for the selected building
+                    loadBuilding(buildingId);
                 }
             };
             xhr.send(`building_id=${buildingId}&floor_number=${floorNumber}`);
@@ -163,7 +161,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
                 xhr.onload = function() {
                     if (this.status === 200) {
                         alert(this.responseText);
-                        // Reload the floors for the currently active building
                         const activeBuilding = document.querySelector('.building-btn.active').getAttribute('data-building');
                         loadBuilding(activeBuilding);
                     }
@@ -181,7 +178,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState == 4 && xhr.status == 200) {
                         alert(xhr.responseText);
-                        location.reload(); // Reload to reflect changes
+                        location.reload();
                     }
                 };
                 xhr.send("toilet_id=" + toilet_id);
