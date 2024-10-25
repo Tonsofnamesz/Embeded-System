@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
     <title>Toilet Usage Tracker</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="background.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- Link to Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
@@ -41,7 +41,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
             <label for="radio-<?= $index + 1 ?>" class="tab building-btn" data-building="<?= $index + 1 ?>"><?= $building ?></label>
             <?php endforeach; ?>
             <div class="glider"></div>
-            <!-- Circle with + symbol to add another building -->
             <div id="add-building" class="circleAdd" onclick="showAddBuildingForm()" <?= ($role === 'admin') ? '' : 'style="display:none;"' ?>>+</div>
             <div class="srot mb-5">| S.R.O.T : ALPHA BUILD</div>
         </header>
