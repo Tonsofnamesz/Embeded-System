@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
                 <span>Logged in as: <strong><?= $username ?></strong> (<em><?= ucfirst($role) ?></em>)</span>
             </div>
             <div class="logout-btn">
-                <form action="index.php" method="post">
+                <form action="index.phmp" method="post">
                     <button type="submit" class="button">Logout</button>
                 </form>
             </div>
